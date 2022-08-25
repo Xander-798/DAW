@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cont{
+    display: flex;
+    width: 100%;
+}
+
+.cont article{
+    margin: 4% auto;
+    padding: auto;
+    justify-content:center;
+    align-items: justify;
+    flex-direction: column;
+    width: 90%;
+}
+
+.cont article .calculadoraC{
+    text-align: center;
+    padding: 3%;
+}
+
+.calculadoraC form legend{
+    text-transform: uppercase;
+}
+
+.calculadoraC form p{
+    width: 100%;
+}
+
+.calculadoraC form div{
+    width: 100%;
+    padding: 1%;
+    font-size: 100%;
+    
+}
+
+form .tres input{
+    width: 18%;
+    padding: 1%;
+}
+
+form div input{
+    width: 10.56%;
+}
