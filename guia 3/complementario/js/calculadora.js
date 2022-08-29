@@ -1,173 +1,166 @@
 window.onload = function(){ //Acciones tras cargar la página
-    pantalla = document.getElementById("textoPantalla"); //Elemento para mostrar en pantalla la salida
-    document.onkeydown = teclado;  //Función del teclado estará disponible
+    pantalla=document.getElementById("textoPantalla"); //elemento pantalla de salida
+    document.onkeydown = teclado; //Habilitar el ingresar dígitos desde el teclado
 }
 
+//Inicializar variables a utilizar
     x = "0"; //Guardamos el número en pantalla
     xi = 1; //Inicializar el número número: 0 es no, 1 es sí
-    punto = 0; //Estado del punto decimal 0=no, 1=si;
-    oper = "no"; //operación siguiente; "no" =  sin operación.
+    punto = 0; //Estado del punto decimal 0 = no, 1 = si;
+    ni = 0; //Número en espera.
+    opcion = "no";
 
 function numero(xx) { //Obtenemos el número que se ha pulsado
-    if (x=="0" || xi==1  ) { // Inicializamos el número
-       pantalla.innerHTML=xx; //Mostrar a pantalla
-       x = xx; //guardamos el número ingresado
+    if (x=="0" || xi==1  ){ // Inicializamos el número
+        pantalla.innerHTML=xx; //Mostrar a pantalla
+        x = xx; //guardamos el número ingresado
 
-       if (xx == ".") { //Si se inicia la cadena de números con un punto (".") se mostrará así: 0.
-          pantalla.innerHTML="0.";
-          x = xx; //Guardamos el número
-          punto = 1; //cambiar estado del punto
-          }
-    }else{ //Continúa la cadena de dígitos
-          if (xx == "." && punto == 0) { //escribimos un punto decimal solo una vez
-              pantalla.innerHTML += xx;
-              x += xx;
-              punto = 1; //cambiamos el esta del punto 
-          }
-         
-          else if (xx == "." && punto == 1) {} 
+        if (xx == ".") { //Si se inicia la cadena de números con un punto (".") se mostrará así: 0.
+            pantalla.innerHTML="0.";
+            x = xx; //Guardamos el número
+            punto = 1; //cambiar estado del punto
+        }
+    }else{ 
+        //Continúa la cadena de dígitos
+        if (xx == "." && punto == 0){ //escribimos un punto decimal solo una vez
+            pantalla.innerHTML += xx;
+            x += xx;
+            punto = 1; //cambiamos el esta del punto 
+        }else if (xx == "." && coma == 1) {
             //No se podrá escribir un segundo punto decimal
-          else {
-              pantalla.innerHTML+=xx; //Resto de casos: escribir un número del 0 al 9: 	 
-              x+=xx
-          }
-    }
-       xi = 0 //el número está iniciado y acumula el dígito.
+        }else{
+            pantalla.innerHTML+=xx; //Resto de casos: escribir un número del 0 al 9: 	 
+            x+=xx
+        }
+    }   
+
+    xi=0 //el número está iniciado y acumular el dígito.
 }
 
-function operar(s) {
-    igual(); //En el caso de haber operaciones pendientes, se realizan
-
-    ni = x //Ponemos el primer número o cadena de dígitos en espera para poder escribir el segundo.
-    oper = s; //Con esta variable guardamos el operador
-    xi = 1; //Se vuelve a inicializar la pantalla
-}
-
-
-function igual() {
-    if (oper == "no") { //No se realiza operación pues no hay alguna pendiente
-       pantalla.innerHTML = x;	//mostramos el mismo número sin operarlo
-    }else{ //Si hay una operación en espera, se realiza
-       sl = ni + oper + x; //Al ser dígitos, ordenamos los datos y operador en forma de una cadena de caracteres.
-       sol = eval(sl); //Se convierte la cadena a código y se evalúa
-       pantalla.innerHTML = sol; //Mostramos la solución a pantalla
-       x = sol; //Guardamos la solución por si se llega a necesitar en la siguiente operación.
-       oper = "no"; //ya no hay operaciones pendientes
-       xi = 1; //Se reinicia la acumulación de dígitos
-    }
-}
-
-
-function raiz() {
-    x = Math.sqrt(x) //Se resuelve una raíz cuadrada
-    pantalla.innerHTML=x; //mostrar en pantalla resultado
-    oper = "no"; //quitar operaciones pendientes.
-    xi = 1; //se puede reiniciar la pantalla 
-}
-
-function porcentaje() { 
-    x = x/100 //Dividimos el número entre 100
-    pantalla.innerHTML = x; //Mostramos el porcentaje en pantalla
-    igualar(); //Culminar operaciones pendientes
-    xi = 1 //Reinicia la acumulación de dígitos
-}
-
-function opuesto() { 
-    nx = Number(x); //El dígito lo convertimos a un número
-    nx = -nx; //Cambiamos su signo
-    x = String(nx); //Se devuelve como cadena de caracteres
-    pantalla.innerHTML = x; //Se muestra el resultado
-}
-
-function invertir() {
-    nx = Number(x); //Como lo hicimos con el anterior tipo de proceso, convertimos la cadena a número
-    nx = (1/nx); //Operamos para encontrar el inverso del número;
-    x= String(nx); //Se devuelve como cadena de caracteres		 
-    pantalla.innerHTML = x; //Se muestra en pantalla
-    xi = 1; //Se reinicia la acumulación de datos
-}
-
-function retroceder(){ //Eliminamos solo el último caracter en pantall
-    cifras = x.length; //Determinamos el número de caracteres acumulados
-    br= x.substr(cifras-1, cifras); //obtenemos la información del último caracter
-    x= x.substr(0,cifras-1); //Eliminamos el último caracter
-    
-    if (x == ""){ //Al no hber más dígitos, pondremos 0
-        x="0";
-    } 
-    
-    if (br == "."){ //Si hemos eliminamos el punto decimal, se permitirá escribirla de nuevo.    
-        punto = 0;
-    } 
-    pantalla.innerHTML=x; //Mostramos en pantalla	 
-}
-
-function borradoParcial() {
-    pantalla.innerHTML = 0; //Borramos los dígitos en pantalla.
-    x = 0; //Indicamos que no hay dígito pues se ha eliminado la cadena completa acumulada
-    punto = 0; //Reiniciamos la caccería				
-}
-
-function borradoTotal() {
-    pantalla.innerHTML = 0; //poner en pantalla "0"
-    x = "0"; //Se reinicia el bloque de dígitos
-    punto = 0; //Se reinicia el punto decimal
-    ni = 0 //El número acumulado también será 0
-    oper = "no" //Borramos o descartamanos el operador
-}
-
-function teclado(eve) { 
-    evento = eve || window.event;
-    k = evento.keyCode; //código numérico de la tecla pulsada
-    
-    //Determinar teclas numéricas del teclado alfanumérico
-    if (k > 47 && k < 58){ 
-       p = k - 48; //Restamos 48 al código de la tecla para determinar el número a mostrar
-       p = String(p) //Se convierte en cadena de caracteres para mostrar en pantalla
-       numero(p); //Se muestra en pantalla
+    function operar(s) {
+        igual(); //Si se cuentan con operaciones previas, se resulven
+        ni = x //Guardamos el primer número para poder escribir el segundo.
+        opcion = s; //Se almacena el operador
+        xi = 1; //Inicializamos la pantalla
     }
 
-//Determinar teclas numéricas del teclado numérico, similar al previo
-    if (k > 95 && k < 106) {
-       p = k - 96; //En este caso al estar desde el código de tecla superior a 95, se le resta 96 para determinar el número a mostrar
-       p = String(p); //Se convierte en cadena de caracteres
-       numero(p); //Se muestra en pantalla
+    function igual() {
+        if (opcion == "no") { 
+            //Cuando no hay operaciones pendientes
+            pantalla.innerHTML = x;	//No efectuamos nada y solo mostramos el número en pantalla
+        }else{ 
+            //Al haber operaciones, resolvemos
+           sl = ni + opcion + x; //Acumulamos la operación en forma de cadena
+           sol = eval(sl) //Se convierte la cadena a código y así, se puede efectuar la operación
+           pantalla.innerHTML = sol //Mostramos la solución en pantalla.
+           x = sol; //Guardamos la solución por si es necesario en una operación proxima
+           opcion = "no"; //Ya no hay operaciones actualmente
+           xi = 1; //Se puede acumular un nuevo número
+        }
     }
 
-    //Operadores
-    if(k == 110 || k == 190){
-        numero("."); //teclas de punto decimal
-    } 
-
-    if(k == 106){
-        operar('*'); //Tecla para la operación de producto ("*" ó multiplicar)
+    function raiz() {
+        x = Math.sqrt(x) //Con el objeto Math, se resuelve el la raíz cuadrada
+        pantalla.innerHTML = x; //Se muestra el resultado
+        opcion = "no"; //Se elimina algún proceso pendiente
+        xi = 1; //Se puede volver a acumular
     }
 
-    if(k == 107){
-        operar('+'); //Tecla para la operación de adición ("+" ó suma)
+    function porcentaje() { 
+        x= x/100; //Se divide el número ingresado entre 100
+        pantalla.innerHTML = x; //Se muestra el resultado en pantalla
+        igualar(); //Resolver operaciones pendientes
+        xi = 1; //Reiniciamos la acumulación de dígitos para el primer número
     }
 
-    if(k == 109){
-        operar('-'); //Tecla para la operación de reducción ("-" ó resta)
-    }
-    
-    if(k == 111){
-        operar('/'); //Tecla para la operación de división ("/" ó división)
-    }
-
-    if(k == 32 || k == 13){
-        igual(); //Tecla para la operación de igualar ("=" ó igual)
+    function invertir() {
+        nx = Number(x); //Convertimos los dígitos a números operables
+        nx = (1/nx); //Invertimos el número al dividir 1 entre el número ingresado.
+        x = String(nx); //Lo convertimos el número a cadena para poder mostrarlo en pantalla y usarlo en otras funcionas
+        pantalla.innerHTML = x; //Mostramos el resultado en pantalla
+        xi = 1; //Reiniciamos la acumulación de dígitos para el primer número
     }
 
-    if(k == 46){
-        borradoTotal(); //Tecla para borrar todo ("supr")
+    function retroceder(){ 
+        //Borrar el último número ingresado
+        cifras = x.length; //Encontramos el número de caracteres en pantalla
+        br = x.substr(cifras-1,cifras); //Obtenemos el último número en pantalla
+        x = x.substr(0,cifras-1); //Se elimina el último caracter
+        if (x==""){
+            x="0"; //Al ya no tener más caracteres, escribimos " 0 ";
+        } 
+        if(br == "."){
+            punto = 0; //Si se llega a eliminar el punto decimal, permitimos volverlo a usar.
+        } 
+        pantalla.innerHTML = x; //Se muestra el resultado en pantalla.
     }
 
-    if (k == 8){
-        retroceder(); //Tecla para retroceder o borrar parcialmente ("retroceder" o "backspace")
+    function borradoParcial() {
+        pantalla.innerHTML=0; //Borramos el número en pantalla.
+        x = 0; //Borrar el número guardado.
+        punto = 0; //Se reinicia el ingreso del punto decimal
     }
 
-    if(k == 36){
-        borradoParcial(); //Tecla para Borrar parcialmente una cadena de dígitos (tecla "inicio")
-    } 
-}
+    function borradoTotal() {
+        pantalla.innerHTML = 0; //Dejamos la pantalla con el estado inicial, escribimos "0"
+        x = "0"; //Reiniciamos el número en trabajo
+        punto = 0; //Se reinicia el ingreso del punto decimal
+        ni = 0 //El número en espera también se reinicia
+        opcion = "no" //Borramos la operación en curso, si es ese el caso
+    }
+
+    function teclado (eventO) { 
+        evento = eventO || window.event;
+        k = evento.keyCode; //obtenemos el número que representa el código de la tecla
+        
+        //Identificamos las teclas numéricas del teclado alfanumérico
+        if (k > 47 && k < 58){ 
+            p = k - 48; /*Identificamos el número a mostrar al restar "48" al código 
+                          numérico para obtener el número que este dentro de los Naturales*/
+            p = String(p); //Se convierte este número obtenido a una cadena para añadir en pantalla
+            numero(p); //Se envía a la función numero() para mostrarlo en pantalla.
+        }
+
+        //Identificar las teclas numéricas del teclado numérico
+        if (k > 95 && k < 106){
+           p = k - 96; //El proceso es el mismo que en el anterior, solo que en este caso, se resta "96".
+           p = String(p);
+           numero(p);
+        }
+
+        //Identificamos los caracteres especiales y operadores (*, +, -, /, retroceder, =, CE, C,)
+        if(k==110 || k==190){
+            numero("."); //Tecla para identificar el punto decimal ( . )
+        } 
+
+        if(k==106){
+            operar('*'); //Tecla para identificar el operador de multiplicación ( * )
+        }
+
+        if(k==107){
+            operar('+'); //Tecla para identificar el operador de suma ( + )
+        } 
+
+        if(k==109){
+            operar('-'); //Tecla para identificar el operador de resta ( - )
+        }
+         
+        if(k==111){
+            operar('/'); //Tecla para identificar el operador de división ( / )
+        } 
+
+        if(k==32 || k==13){
+            igual(); //Tecla para identificar el operador de igualdad ( = ): Enter o Barra espaciadora
+        } 
+
+        if(k==46){
+            borradoTotal(); //Tecla para identificar el Borrador Total ( C ): "Supr"
+        } 
+
+        if(k==8){
+            retroceder(); //Tecla para identificar el Retroceder digitado (Retro): tecla de retroceso
+        } 
+        if(k==36){
+            borradoParcial(); //Tecla para identificar el Borrador Parcial ( CE ): tecla de inicio
+        } 
+    }
