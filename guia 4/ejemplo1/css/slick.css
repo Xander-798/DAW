@@ -376,3 +376,162 @@ color: #999 !important;
 }
 #slick .ie9-placeholder:focus {
 color: #ccc !important;}
+
+/***** Validations *****/
+#slick .field input:required,
+#slick .field textarea:required,
+#slick .field select:required {
+background: #fff url(../img/required.png) no-repeat 100% 15px;
+outline: none;
+box-shadow: none;
+}
+#slick .field input:hover:invalid,
+#slick .field textarea:hover:invalid,
+#slick .field select:hover:invalid {
+background: #fff url(../img/focused.png) no-repeat 100% 15px;
+outline: none;
+box-shadow: none;
+}
+#slick .field input:required:valid,
+#slick .field textarea:required:valid,
+#slick .field select:required:valid {
+background: #fff url(../img/valid.png) no-repeat 100% 15px;
+outline: none;
+box-shadow: none;
+}
+#slick .field input:focus:invalid,
+#slick .field textarea:focus:invalid,
+#slick .field select:focus:invalid {
+background: #fff url(../img/invalid.png) no-repeat 100% 15px;
+outline: none;
+box-shadow: none;
+}
+/***** Send button *****/
+#slick input.send {
+background: #FF2424;
+border: none;
+clear: none;
+color: #fff;
+display: inline-block;
+float: right;
+font-size: 12px;
+margin-right: 10px;
+outline: none;
+padding: 6px 28px;
+text-align: center;
+text-transform: uppercase;
+width: auto;
+}
+#slick input.send:hover,
+#slick input.send:focus {
+border: none;
+outline: none;
+background: #333;
+cursor: pointer;
+}
+/***** Tick checkboxes *****/
+#slick label.tick {
+display: inline-block;
+float: left;
+position: relative;
+width: auto;
+}
+
+#slick label.tick:before {
+    background: #fff;
+    border: solid 2px #ddd;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    position: absolute;
+    width: 16px;
+    }
+    #slick label.tick:after {
+    opacity: 0;
+    visibility: hidden;
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    background: transparent;
+    top: 6px;
+    left: 5px;
+    border: 2px solid #333;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    }
+    #slick input:checked + label.tick:after {
+    opacity: 1;
+    visibility: visible;
+    }
+    #slick label.tick span {
+    font-size: 11px;
+    color: #999;
+    padding-left: 26px;
+    }
+    #slick label.tick:hover span {
+    color: #333;
+    }
+    /* ==================
+    6. TRANSITIONS
+    ================== */
+    #slick a,
+    #slick label,
+    #slick input,
+    #slick select,
+    #slick textarea,
+    #slick span.slick-tip,
+    #slick input ~ span.icon,
+    #slick select ~ span.icon,
+    #slick textarea ~ span.icon {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+/* ==================
+7. MEDIA QUERIES
+================== */
+/***** Max width 480px *****/
+@media screen and (max-width:480px) {
+#slick {
+width: 100%;
+}
+#slick .w-47,
+#slick .w-30 {
+width: 100%;
+}
+#slick .mr-6,
+#slick .mr-5 {
+margin-right: 0;
+}
+#slick .map {
+margin-top: 20px;
+}
+#slick .w-30,
+#slick .mr-5 {
+margin-bottom: 20px;
+}
+#slick .field input,
+#slick .field textarea,
+#slick .field select {
+font-size: 16px;
+}
+#slick p.intro {
+font-size: 14px;
+line-height: 20px;
+}
+#slick input.send {
+width: 100%;
+padding: 12px;
+float: left;
+clear: both;
+font-size: 16px;
+}
+}
