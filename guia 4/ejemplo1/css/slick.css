@@ -84,9 +84,9 @@ opacity: 0;
     #slick .w-100,
     #slick .w-47,
     #slick .w-30 {
-        float: left;
-        display: inline-block;
-        position: relative;
+    float: left;
+    display: inline-block;
+    position: relative;
     }
     #slick .w-100 {
     width: 100%;
@@ -105,7 +105,7 @@ opacity: 0;
     }
     #slick .mt-5 {
         margin-top: 5px;
-}
+    }
 #slick .mt-10 {
 margin-top: 10px;
 }
@@ -158,7 +158,6 @@ background: #333;
 margin-top: 24px;
 width: 100%;
 }
-
 #slick #resultado p {
     color: #ddd;
     text-align: center;
@@ -375,7 +374,8 @@ color: #ccc;
 color: #999 !important;
 }
 #slick .ie9-placeholder:focus {
-color: #ccc !important;}
+color: #ccc !important;
+}
 
 /***** Validations *****/
 #slick .field input:required,
@@ -500,38 +500,45 @@ width: auto;
 ================== */
 /***** Max width 480px *****/
 @media screen and (max-width:480px) {
-#slick {
-width: 100%;
-}
-#slick .w-47,
-#slick .w-30 {
-width: 100%;
-}
-#slick .mr-6,
-#slick .mr-5 {
-margin-right: 0;
-}
-#slick .map {
-margin-top: 20px;
-}
-#slick .w-30,
-#slick .mr-5 {
-margin-bottom: 20px;
-}
-#slick .field input,
-#slick .field textarea,
-#slick .field select {
-font-size: 16px;
-}
-#slick p.intro {
-font-size: 14px;
-line-height: 20px;
-}
-#slick input.send {
-width: 100%;
-padding: 12px;
-float: left;
-clear: both;
-font-size: 16px;
-}
+    #slick {
+    width: 100%;
+    }
+    
+    #slick .w-47,
+    #slick .w-30 {
+    width: 100%;
+    }
+
+    #slick .mr-6,
+    #slick .mr-5 {
+    margin-right: 0;
+    }
+
+    #slick .map {
+    margin-top: 20px;
+    }
+
+    #slick .w-30,
+    #slick .mr-5 {
+    margin-bottom: 20px;
+    }
+
+    #slick .field input,
+    #slick .field textarea,
+    #slick .field select {
+    font-size: 16px;
+    }
+
+    #slick p.intro {
+    font-size: 14px;
+    line-height: 20px;
+    }
+
+    #slick input.send {
+    width: 100%;
+    padding: 12px;
+    float: left;
+    clear: both;
+    font-size: 16px;
+    }
 }

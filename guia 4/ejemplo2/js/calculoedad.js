@@ -1,57 +1,67 @@
 //Variable para determinar si un año es bisiesto o no
 var bisiesto = false;
+
 //Registrar evento click al presionar el botón de envío
 function iniciar(){
     var dia, mes;
     var btncalcular = document.getElementById("calcular");
+
     //Al producirse un click sobre el botón de envío invocar
     //a la función edad para calcularla con los datos ingresados
     if(btncalcular.addEventListener){
         btncalcular.addEventListener("click", function(){
-        dia = document.frmFechaNac.seldia.options[frmFechaNac.seldia.selectedIndex].value;
-        mes = document.frmFechaNac.selmes.options[frmFechaNac.selmes.selectedIndex].value;
-        edad(dia, mes, document.frmFechaNac.txtano.value);
+            dia = document.frmFechaNac.seldia.options[frmFechaNac.seldia.selectedIndex].value;
+            mes = document.frmFechaNac.selmes.options[frmFechaNac.selmes.selectedIndex].value;
+
+            edad(dia, mes, document.frmFechaNac.txtano.value);
         }, false);
-    }else{
+    }
+    else{
         alert(mes);
         btncalcular.attachEvent("onclick", function(){
-        dia = document.frmFechaNac.seldia.options[frmFechaNac.seldia.selectedIndex].value;
-        mes = document.frmFechaNac.selmes.options[frmFechaNac.selmes.selectedIndex].value;
-        edad(dia, mes, document.frmFechaNac.txtano.value);
+            dia = document.frmFechaNac.seldia.options[frmFechaNac.seldia.selectedIndex].value;
+            mes = document.frmFechaNac.selmes.options[frmFechaNac.selmes.selectedIndex].value;
+
+            edad(dia, mes, document.frmFechaNac.txtano.value);
         });
     }
 
-    /*Si se cambia de mes en el campo select name=selmes invocar
-    a la función llenarDias() para volver a rellenar el campo
-    select dependiente de los días de acuerdo al mes seleccionado*/
+    //Si se cambia de mes en el campo select name=selmes invocar
+    //a la función llenarDias() para volver a rellenar el campo
+    //select dependiente de los días de acuerdo al mes seleccionado
     var selmes = document.getElementById("mes");
+
     if(selmes.addEventListener){
         selmes.addEventListener("change", function(){
-        mes =
-        document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
-        llenarDias(mes, document.frmFechaNac.seldia);
-        }, false);
-    }else if(selmes.attachEvent){
-        selmes.attachEvent("onchange", function(){
-        mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
-        llenarDias(mes, document.frmFechaNac.seldia);
-        });
-    }
+            mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
 
+            llenarDias(mes, document.frmFechaNac.seldia);
+        }, false);
+    }
+    else if(selmes.attachEvent){
+        selmes.attachEvent("onchange", function(){
+            mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
+
+            llenarDias(mes, document.frmFechaNac.seldia);
+        }, false);
+    }
+    
     //Del mismo modo, si se ingresa otro año, volver a rellenar
     //el campo select de los días para considerar si se cambia
     //a un año bisiesto o no
     var txtano = document.getElementById("ano");
     if(txtano.addEventListener){
         txtano.addEventListener("change", function(){
-        mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
-        llenarDias(mes, document.frmFechaNac.seldia);
+            mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
+
+            llenarDias(mes, document.frmFechaNac.seldia);
         }, false);
     }
     else if(txtano.attachEvent){
         txtano.attachEvent("onchange", function(){
-        mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
-        llenarDias(mes, document.frmFechaNac.seldia);
+            mes = document.frmFechaNac.selmes.options[document.frmFechaNac.selmes.selectedIndex].value;
+
+            llenarDias(mes, document.frmFechaNac.seldia);
         });
     }
 }
@@ -60,7 +70,8 @@ function iniciar(){
 function esBisiesto(anno){
     if(anno % 4 == 0 && (anno % 400 == 0 || anno % 100 != 0)){
         bisiesto = true;
-    }else{
+    }
+    else{
         bisiesto = false;
     }
 
@@ -69,8 +80,8 @@ function esBisiesto(anno){
 
 //Función para limpiar el menú de selección Días
 function quitarDias(menuDias){
-    for(i=0; i<menuDias.options.length; i++){
-        menuDias.options[i] = null;
+    for(i=0; i<menuDias.options.lenght;i++){
+        menuDias.options[i]= null;
     }
 }
 
@@ -78,7 +89,9 @@ function quitarDias(menuDias){
 function llenarDias(mes, menuDias){
     document.frmFechaNac.seldia.disabled = false;
     var i;
+
     quitarDias(menuDias);
+
     switch(mes){
         case 'Enero':
         case 'Marzo':
@@ -87,176 +100,172 @@ function llenarDias(mes, menuDias){
         case 'Agosto':
         case 'Octubre':
         case 'Diciembre':
-
-            for(i=0; i<31; i++){
+            for(i=0; i<31;i++){
                 menuDias[i] = new Option(parseInt(i+1), parseInt(i+1));
             }
-
             break;
-
+        
         case 'Abril':
         case 'Junio':
         case 'Septiembre':
         case 'Noviembre':
-        
-            for(i=0; i<30; i++){
+            for(i=0; i<30;i++){
                 menuDias[i] = new Option(parseInt(i+1), parseInt(i+1));
             }
-
             break;
 
         case 'Febrero':
             if(esBisiesto(document.frmFechaNac.txtano.value)){
-                for(i=0; i<29; i++){
+                for(i=0; i<29;i++){
                     menuDias[i] = new Option(parseInt(i+1), parseInt(i+1));
                 }
             }
             else{
-                for(i=0; i<28; i++){
+                for(i=0; i<28;i++){
                     menuDias[i] = new Option(parseInt(i+1), parseInt(i+1));
                 }
             }
-
-            break;
+            break;        
     }
 }
 
 //Función para obtener la edad exacta de la persona
-function edad(dia, mes, annio){
-    var tusdias, tusmeses, tusannios;
-    
-    /*Uso del objeto Date de JavaScript
-    y los métodos getFullYear(), getMonth() y getDate()*/
+function edad(dia, mes, anio){
+    var tusdias, tusmeses, tusanios;
+
+    //Uso del objeto Date de JavaScript
+    //y los métodos getFullYear(), getMonth() y getDate()
     var fecActual = new Date();
     var year = fecActual.getFullYear();
     var month = parseInt(fecActual.getMonth()) + 1;
     var day = fecActual.getDate();
-    
+
     tusdias = day - dia;
-    
+
     //Referenciar al elemento donde se mostrará la información
-    var infoedad = document.getElementById('edad');
-    
+    var infoEdad = document.getElementById('edad');
+
     switch(mes){
         case 'Enero':
             mes = 1;
-        
-        if(tusdias < 0){
-            tusdias = day - dia + 31;
-            month--;
-        }
-        break;
+            if(tusdias < 0){
+                tusdias = day - dia + 31;
+                month--;
+            }
+            break;
         
         case 'Febrero':
             mes = 2;
             if(tusdias < 0 && esBisiesto(annio)){
                 tusdias = day - dia + 29;
                 month--;
-            }else
-                if(tusdias < 0 && !esBisiesto(annio)){
+            }
+            else
+                if(tusdias < 0 && !esBisiesto(anio)){
                     tusdias = day - dia + 28;
                     month--;
                 }
-        break;
+            break;
         
         case 'Marzo':
             mes = 3;
-            if(tusdias < 0){            
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
+            break;
 
         case 'Abril':
             mes = 4;
-            if(tusdias < 0){            
+            if(tusanios < 0){
                 tusdias = day - dia + 30;
                 month--;
             }
-        break;
+            break;
 
         case 'Mayo':
             mes = 5;
-            if(tusdias < 0){
-            
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
+            break;
 
         case 'Junio':
             mes = 6;
-            if(tusdias < 0){
+            if(tusanios < 0){
                 tusdias = day - dia + 30;
                 month--;
             }
-        break;
-
+            break;
+        
         case 'Julio':
             mes = 7;
-        
-            if(tusdias < 0){
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
-
+            break;
+        
         case 'Agosto':
             mes = 8;
-            if(tusdias < 0){ 
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
+            break;
         
         case 'Septiembre':
             mes = 9;
-            if(tusdias < 0){
+            if(tusanios < 0){
                 tusdias = day - dia + 30;
                 month--;
             }
-        break;
+            break;
 
         case 'Octubre':
             mes = 10;
-            if(tusdias < 0){            
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
+            break;
 
         case 'Noviembre':
             mes = 11;
-            if(tusdias < 0){            
+            if(tusanios < 0){
                 tusdias = day - dia + 30;
                 month--;
             }
-        break;
-            
+            break;
+        
         case 'Diciembre':
             mes = 12;
-            if(tusdias < 0){
+            if(tusanios < 0){
                 tusdias = day - dia + 31;
                 month--;
             }
-        break;
-        
-        }
-        tusmeses = month - mes;
-        if(tusmeses < 0){
+            break;
+    }
+
+    tusmeses = month - mes;
+
+    if(tusmeses < 0){
         tusmeses = month - mes + 12;
         year--;
-        }
-        tusannios = year - annio;
-        //Mostrar la información de la edad
-        infoedad.innerHTML = "<h2 class=\"contact\">Su edad exacta es:</h2>\n";
-        infoedad.innerHTML += "<p>Tu edad exacta es: " + tusannios + " años, " + tusmeses
-        + " meses, y " + tusdias + " días.</p>\n";
-        }
-        //Asociando función que manejará el evento load al cargar la página
-        if(window.addEventListener){
-        window.addEventListener("load", iniciar, false);
-        }
-        else if(window.attachEvent){
-        window.attachEvent("onload", iniciar);
-        }
+    }
+
+    tusanios = year - anio;
+
+    //Mostrar la información de la edad
+    infoEdad.innerHTML = "<h2 class=\"contact\">Su edad exacta es:</h2>\n";
+    infoEdad.innerHTML += "<p>Tu edad exacta es: " + tusanios + " años, " + tusmeses + " meses y " + tusdias + " días.</p>\n";
+}
+
+//Asociando función que manejará el evento load al cargar la página
+if(window.addEventListener){
+    window.addEventListener("load", iniciar, false);
+}
+else if(window.attachEvent){
+    window.attachEvent("onload", iniciar);
+}

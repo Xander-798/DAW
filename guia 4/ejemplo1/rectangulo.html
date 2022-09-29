@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Áreas de rectángulos</title>
-    <link rel="stylesheet" href="css/slick.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de rectángulos</title>
+    <link rel="stylesheet" href="css/slick.css"/>
     <script src="js/calculo.js"></script>
 </head>
 <body>
@@ -13,33 +15,43 @@
         <!-- Título -->
             <div class="title">Cálculo de área y perímetro</div>
             <!-- Texto indicativo -->
-                <p class="intro">Ingrese los siguientes datos</p>
-                <!-- Formulario -->
-                <div class="w-100">
-                <!-- Campos de formulario -->
-                    <form name="frmrectangulo" id="frmrectangulo" action="javascript:void(0);">
-                        <!-- Campo para la base -->
-                        <div class="field">
-                            <!-- Para que el campo input type=number acepte número con punto decimal, el atributo step debe estar establecido con el valor any -->
-                            <input type="number" name="base" id="txtbase" min="0.0" max="1000.0" step="any" placeholder="(Base)" required/>
-                            <span class="entypo-base icon"></span>
-                            <span class="slick-tip left">Ingrese la base:</span>
-                        </div>
-                        <!-- Campo para la altura -->
-                        <div class="field">
-                            <!-- Para que el campo input type=number acepte número con punto decimal, el atributo step debe estar establecido con el valor any -->
-                            <input type="number" name="altura" id="txtaltura" min="0.0" max="1000.0" step="any" placeholder="(Altura)" required />
-                            <span class="entypo-altura icon"></span>
-                            <span class="slick-tip left">Ingrese la altura:</span>
-                        </div>
-                        <!-- Botones para hacer los cálculos -->
-                            <input type="submit" value="area" name="btnarea" id="area" class="send" />
-                            <input type="submit" value="perimetro" name="btnperimetro" id="perimetro" class="send"/>
-                    </form>
+            <p class="intro">Ingrese los siguientes datos</p>
+            <!-- Formulario -->
+            <div class="w-100">
+            <!-- Campos de formulario -->
+                <form name="frmrectangulo" id="frmrectangulo" action="javascript:void(0);">
+
+                    <!-- Campo para la base -->
+                    <div class="field">
+                        <!-- Para que el campo input type=number
+                        acepte número con punto decimal, el atributo
+                        step debe estar establecido con el valor any -->
+                        <input type="number" name="base" id="txtbase" min="0.0" max="1000.0" step="any" placeholder="(Base)"required />
+                        <span class="entypo-base icon"></span>
+                        <span class="slick-tip left">Ingrese la base:</span>
+                    </div>
+
+                    <!-- Campo para la altura -->
+                    <div class="field">
+                    <!-- Para que el campo input type=number
+                    acepte número con punto decimal, el atributo
+                    step debe estar establecido con el valor any -->
+                        <input type="number" name="altura" id="txtaltura" min="0.0" max="1000.0" step="any" placeholder="(Altura)" required />
+                        <span class="entypo-altura icon"></span>
+                    
+                        <span class="slick-tip left">Ingrese la altura:</span>
+                    
+                    </div>
+
+                    <!-- Botones para hacer los cálculos -->
+                    <input type="submit" value="area" name="btnarea" id="area" class="send" />
+                    <input type="submit" value="perimetro" name="btnperimetro" id="perimetro" class="send" />
+                </form>
                 <!-- Fin de campos de formulario -->
-                </div>
             </div>
-            <!-- Final del área del formulario -->
+        </div>
+
+        <!-- Final del área del formulario -->
         <div id="resultado"></div>
     </section>
 </body>
