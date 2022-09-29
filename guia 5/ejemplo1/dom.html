@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Funcionalidad básica del DOM</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/dom.css" />
+    <script src="js/dom.js"></script>
+</head>
+<body>
+    <header id="encabezado">
+        <h1 id="encabezadogrande" class="highlighted">
+            [Encabezadogrande] <br/> Modelo de objetos DHTML
+        </h1>
+        <h3 id="encabezadochico">
+            [Encabezadochico] Funcionalidad de elementos
+        </h3>
+    </header>
+
+    <section>
+        <article id="parrafos">
+            <p id="para1">
+                [Para1] El Modelo de Objetos de Documento (DOM) permite
+                el acceso rápido y dinámico a todos los elementos de HTML5
+                para manipularlos con JavaScript.
+            </p>
+            <p id="para2">
+                [Para2] Para mayor información, revise la sección "JavaScript
+                y el DOM" del <a href="http://www.deitel.com/javascript" id="link">
+                [link] Centro de recursos de JavaScript</a> de Deitel.
+            </p>
+            <p id="para3">
+                [Para3] Los siguientes botones demuestran: (lista)
+            </p>
+            <ul id="lista">
+                <li id="elemento1">[Elemento1] getElementById y parentNode.</li>
+                <li id="elemento2">[Elemento2] insertBefore y appendChild.</li>
+                <li id="elemento3">[Elemento3] replaceChilde y removeChild.</li>
+            </ul>
+        </article>
+
+        <article>
+            <div id="nav" class="nav">
+                <form onsubmit="Regresa falso" action="#">
+                    <p>
+                        <input type="text" id="gbi" value="encabezadogrande" />
+                        <input type="reset" value="Obtener por id" id="botonPorId" />
+                    </p>
+                    <p>
+                        <input type="text" id="ins" />
+                        <input type="reset" id="botonInsertar" value="Insertar antes" />
+                    </p>
+                    <p>
+                        <input type="text" id="adjuntar" />
+                        <input type="reset" value="Adjuntar hijo" id="botonAdjuntar" />
+                    </p>
+                    <p>
+                        <input type="text" id="reemplazar" />
+                        <input type="reset" value="Reemplazar actual" id="botonReemplazar" />
+                    </p><br />
+                    <p>
+                        <input type="button" value="Eliminar actual" id="botonEliminar" />
+                    </p>
+                    <p>
+                        <input type="button" value="Obtener padre" id="botonPadre" />
+                    </p>
+                </form>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

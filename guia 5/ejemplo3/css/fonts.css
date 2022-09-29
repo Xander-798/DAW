@@ -1,0 +1,10 @@
+@font-face { 
+    font-family: 'GentiumRegular'; 
+    src: url('../fonts/GentiumRegular.eot'); 
+    src: url('../fonts/GentiumRegular.eot?#iefix') format('embedded-opentype'), 
+         url('../fonts/GentiumRegular.woff') format('woff'), 
+         url('../fonts/GentiumRegular.ttf') format('truetype'), 
+         url('../fonts/GentiumRegular.svg#MyWebfont') format('svg'); 
+    font-weight: normal; 
+    font-style: normal; 
+}

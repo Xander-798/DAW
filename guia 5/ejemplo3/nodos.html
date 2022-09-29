@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Creación y eliminación de nodos</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/estilosnode.css" />
+    <script src="js/nodos.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Creación y eliminación de nodos</h1>
+    </header>
+    <div>
+        <form action="javascript:void(0);">
+            <fieldset id="nodeform">
+                <legend><span>Manejo de nodos con el DOM</span></legend>
+                
+                <label for="textarea" class="txa">Introduzca texto:</label>
+                <textarea name="textArea" id="textArea" class="textareabox" rows="8" cols="45"></textarea><br />
+                <input type="radio" name="nodeAction" id="nodeAction" />
+
+                <label for="nodeAction">Añadir nodo</label>
+                <input type="radio" name="nodeAction" id="nodeAction" />
+
+                <label for="nodeAction">Eliminar nodo</label>
+                <input type="radio" name="nodeAction" id="nodeAction" />
+
+                <label for="nodeAction">Insertar antes de un nodo</label><br />
+                <label for="grafCount">Párrafo número:</label>
+
+                <select name="grafCount" id="grafCount"><br />
+                </select><br/>
+
+                <input type="submit" value="Enviar" class="boton" />
+            </fieldset>
+        </form>
+    </div>
+    <div id="modificable">
+    </div>
+</body>
+</html>
