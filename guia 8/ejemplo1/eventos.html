@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <title>Vincular y desvincular controladores de eventos</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/events.css" />
+    <script src="js/eventhandler.js"></script>
+</head>
+<body>
+    <section>
+        <article>
+            <form name="frmestilos">
+                <select name="selestilos">
+                    <option value="first">Primero</option>
+                    <option value="second">Segundo</option>
+                </select>
+            </form>
+        </article>
+    </section>
+    <div title="Hazme clic">
+        <h3>¿Qué es LocalStorage?</h3>
+        <p>
+            Se trata de un espacio de almacenamiento local que
+            solventa varias de las desventajas que tiene el uso
+            de <em>cookies</em>, como el espacio no tan limitado,
+            el hecho de evitar enviar la información en cada
+            petición al servidor y la no caducidad de esa misma
+            información.
+        </p>
+        <p>
+            En teoría, LocalStorage nos permite guardar hasta
+            5 MB del lado del cliente por dominio. La ventaja
+            de esto es que sobrepasa con mucho el límite de
+            almacenamiento con cookies que era de 100 KB.
+            Además, del hecho que con este nuevo límite es posible
+            guardar casi cualquier tipo de información, desde
+            texto hasta multimedia, en tanto no sobrepase los
+            5 MB.
+        </p>
+    </div>
+    <div title="Pero sólo una vez">
+        <h3>¿Qué es SessionStorage?</h3>
+        <p>
+            SessionStorage es un atributo del DOM (Document
+            Object Model) que se utiliza como objeto global de
+            JavaScript que dispone de métodos que permiten
+            manipular los datos que se quieren utilizar.
+        </p>
+        <p>
+            Las sesiones se inician o se crean cuando el
+            navegador solicita información al servidor cada
+            vez que se abre una página web. Las sesiones guardan
+            datos que serán accesibles únicamente al navegador
+            con el que se inició la conexión.
+        </p>
+    </div>
+    </body>
+</html>

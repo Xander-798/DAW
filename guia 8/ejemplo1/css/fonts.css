@@ -1,0 +1,25 @@
+/* Webfont: DroidSans */
+@font-face {
+    font-family: 'DroidSans';
+    src: url('../fonts/droid/DroidSans.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/droid/DroidSans.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/droid/DroidSans.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/droid/DroidSans.ttf') format('truetype'),
+         url('../fonts/droid/DroidSans.svg#DroidSans') format('svg'); ; 
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: DroidSans-Bold */
+@font-face {
+    font-family: 'DroidSans-Bold';
+    src: url('../fonts/droid/DroidSans-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/droid/DroidSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/droid/DroidSans-Bold.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/droid/DroidSans-Bold.ttf') format('truetype'),
+         url('../fonts/droid/DroidSans-Bold.svg#DroidSans-Bold') format('svg'); ; 
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}

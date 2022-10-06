@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Visor de imágenes con JavaScript</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/links.css" />
+<link rel="stylesheet" href="css/button.css" />
+<link rel="stylesheet" href="css/common.css" />
+<script src="js/imgviewer.js"></script>
+<script src="js/modernizr.custom.js"></script>
+</head>
+<body>
+<header>
+<h1>Visor de imágenes</h1>
+</header>
+<table border="0" cellpadding="0" width="90%" align="center">
+<tr>
+<td width="80%" align="center">
+<img src="img/house0.jpg" width="300" height="240" name="photoslider"
+id="photoslider" />
+</td>
+</tr>
+<tr>
+<td width="80%">
+<form method="POST" name="rotater">
+<div align="center">
+<input type="button" value="&lt;&lt;Atrás" name="B2" id="B2" class="button blue">
+<input type="button" value="Adelante&gt;&gt;" name="B1" id="B1" class="button
+blue"><br />
+<script type="text/javascript">
+document.rotater.B2.onclick = backward;
+document.rotater.B1.onclick = forward;
+</script>
+<article class="color-1">
+<nav id="cl-effect-20 a" class="cl-effect-20 a">
+<a href="javascript:void(0);" id="linkbegin">
+<span data-hover="Comenzar de nuevo">Comenzar de nuevo</span>
+</a>
+</nav>
+</article>
+</div>
+</form>
+</td>
+</tr>
+</table>
+<section>
+<article class="color-5">
+<h4>Imágenes</h4>
+<nav id="cl-effect-19 a" class="cl-effect-19 a">
+<a href="img/house0.jpg" name="house1" id="house1">
+<span data-hover="house0.jpg">house0.jpg</span>
+</a>
+<a href="img/house1.jpg" name="house2" id="house2">
+<span data-hover="house1.jpg">house1.jpg</span>
+</a>
+<a href="img/house2.jpg" name="house3" id="house3">
+<span data-hover="house2.jpg">house2.jpg</span>
+</a>
+<a href="img/house4.jpg" name="house4" id="house4">
+<span data-hover="house4.jpg">house4.jpg</span>
+</a>
+</nav>
+</article>
+</section>
+<script language="JavaScript" type="text/javascript">
+document.links['house1'].onclick = new Function("document.images['photoslider'].src=photos[0];
+document.links['house1'].href='javascript:void(0)'; return false");
+document.links['house2'].onclick = new Function("document.images['photoslider'].src=photos[1];
+document.links['house2'].href='javascript:void(0)'; return false");
+document.links['house3'].onclick = new Function("document.images['photoslider'].src=photos[2];
+document.links['house3'].href='javascript:void(0)'; return false");
+document.links['house4'].onclick = new Function("document.images['photoslider'].src=photos[3];
+document.links['house4'].href='javascript:void(0)'; return false");
+</script>
+</body>
+</html>

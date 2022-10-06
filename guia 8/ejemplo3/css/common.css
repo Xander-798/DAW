@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+header h1 {
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: #21b4e2;
+    font: Bold 3.2em "LeagueGothic-Regular",sans-serif;
+    letter-spacing: 1.25px;
+    text-align:center;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+}
